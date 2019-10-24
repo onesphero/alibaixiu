@@ -22,8 +22,27 @@ $('#feature').on('change',function(){
         success:function(response){
             console.log(response);
             $('#thumbnail').val(response[0].cover)
+            // $('#showTime').prop('src',response[0].cover).show()
         }
 
     })
 })
 
+$('#postForm').on('submit',function(){
+    var formData=$(this).serialize()
+    console.log(formData);
+    
+    $.ajax({
+        type:'post',
+        url:'/posts',
+        data:formData,
+        success:function(response){
+            console.log(response);
+            
+            location.href='/admin/posts.html'
+        }
+
+    })
+    return false;
+})
+//搜索twbs
